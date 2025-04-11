@@ -1,1 +1,1 @@
-GET http://localhost:8080/receipts/1/points
+GET http://localhost:8080/receipts/e4891bc9-f4d2-4548-b615-d05ef9e7f86b/points

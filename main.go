@@ -5,6 +5,7 @@ import (
 	"receipt-processor/models"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 func main() {
@@ -25,7 +26,7 @@ func processReceipt(context *gin.Context) {
 
 	// Generate UIUD later
 	var id models.ID
-	id.ID = "1"
+	id.ID = uuid.New().String()
 	id.Receipt = reciept
 
 	models.Receipts[id.ID] = id.Receipt
@@ -40,7 +41,7 @@ func getPointsFromID(context *gin.Context) {
 	totalPoints, ok := models.PointsForId[id]
 
 	if ok {
-		context.JSON(http.StatusOK, gin.H{"points": totalPoints})
+		context.JSON(http.StatusOK, gin.H{"points": totalPoints.Points})
 		return
 	}
 
