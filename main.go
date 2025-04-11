@@ -3,9 +3,10 @@ package main
 import (
 	"net/http"
 	"receipt-processor/models"
+	"receipt-processor/utils"
+	"receipt-processor/validators"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func main() {
@@ -24,9 +25,16 @@ func processReceipt(context *gin.Context) {
 		return
 	}
 
-	// Generate UIUD later
+	// Validate json data
+	err = validators.ValidateReceipt(reciept)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	// Generate unique id for the receipt
 	var id models.ID
-	id.ID = uuid.New().String()
+	id.ID = utils.GenerateUniqueId()
 	id.Receipt = reciept
 
 	models.Receipts[id.ID] = id.Receipt
