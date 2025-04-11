@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "retailer": "Target",
-  "purchaseDate": "2025-04-01",
+  "purchaseDate": "2025-04-02",
   "purchaseTime": "13:01",
   "items": [
     {
