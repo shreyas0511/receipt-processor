@@ -1,6 +1,6 @@
 package models
 
 type Items struct {
-	ShortDescription string `json:"shortDescription"`
-	Price            string `json:"price"`
+	ShortDescription string `json:"shortDescription" binding:"required"`
+	Price            string `json:"price" binding:"required"`
 }
