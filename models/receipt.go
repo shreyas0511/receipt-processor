@@ -7,3 +7,5 @@ type Receipt struct {
 	Items        []Items `json:"items" binding:"required"`
 	Total        string  `json:"total" binding:"required"`
 }
+
+var Receipts = map[string]Receipt{}
