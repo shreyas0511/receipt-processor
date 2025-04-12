@@ -28,12 +28,6 @@ func ValidateReceipt(receipt models.Receipt) error {
 		return errors.New("invalid time")
 	}
 
-	// date time should not be after current date time
-	// combinedDateTime := time.Date(purchaseDate.Year(), purchaseDate.Month(), purchaseDate.Day(), purchaseTime.Hour(), purchaseTime.Minute(), purchaseTime.Second(), 0, time.UTC)
-	// if combinedDateTime.After(time.Now()) {
-	// 	return errors.New("invalid date/time")
-	// }
-
 	// Validate Items
 	// Items list should not be empty
 	if len(receipt.Items) == 0 {

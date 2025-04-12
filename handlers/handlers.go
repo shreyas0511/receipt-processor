@@ -17,7 +17,6 @@ func ProcessReceipt(context *gin.Context) {
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": "The receipt is invalid."})
-		// context.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 
@@ -25,7 +24,6 @@ func ProcessReceipt(context *gin.Context) {
 	err = validators.ValidateReceipt(reciept)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": "The receipt is invalid."})
-		// context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
