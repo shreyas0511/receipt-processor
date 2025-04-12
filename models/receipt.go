@@ -8,4 +8,5 @@ type Receipt struct {
 	Total        string  `json:"total" binding:"required"`
 }
 
+// Map of {id: Receipt} to retrieve Receipt given an id
 var Receipts = map[string]Receipt{}

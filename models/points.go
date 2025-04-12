@@ -4,5 +4,5 @@ type Points struct {
 	Points int64
 }
 
-// Store the points calculated for a particular id
+// Map of {id: CalculatedPoints} to avoid recalculation
 var PointsForId = map[string]Points{}

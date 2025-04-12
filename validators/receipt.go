@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// regex for valid price format
 var PriceRegEx = regexp.MustCompile(`^(0|[1-9][0-9]*)\.\d{2}$`)
 
 func ValidateReceipt(receipt models.Receipt) error {
@@ -16,28 +17,29 @@ func ValidateReceipt(receipt models.Receipt) error {
 	}
 
 	// Date should be of a valid format
-	purchaseDate, err := ValidateDate(receipt.PurchaseDate)
+	_, err := ValidateDate(receipt.PurchaseDate)
 	if err != nil {
 		return errors.New("invalid date")
 	}
 
 	// Time should be of a valid fomat
-	purchaseTime, err := ValidateTime(receipt.PurchaseTime)
+	_, err = ValidateTime(receipt.PurchaseTime)
 	if err != nil {
 		return errors.New("invalid time")
 	}
 
 	// date time should not be after current date time
-	combinedDateTime := time.Date(purchaseDate.Year(), purchaseDate.Month(), purchaseDate.Day(), purchaseTime.Hour(), purchaseTime.Minute(), purchaseTime.Second(), 0, time.UTC)
-	if combinedDateTime.After(time.Now()) {
-		return errors.New("invalid date/ time")
-	}
+	// combinedDateTime := time.Date(purchaseDate.Year(), purchaseDate.Month(), purchaseDate.Day(), purchaseTime.Hour(), purchaseTime.Minute(), purchaseTime.Second(), 0, time.UTC)
+	// if combinedDateTime.After(time.Now()) {
+	// 	return errors.New("invalid date/time")
+	// }
 
 	// Validate Items
 	// Items list should not be empty
 	if len(receipt.Items) == 0 {
 		return errors.New("empty list of items")
 	}
+
 	// Every Item should have a valid description and price
 	for _, item := range receipt.Items {
 		description := item.ShortDescription
