@@ -22,7 +22,7 @@ func setUpRouter() *gin.Engine {
 
 func TestValidReceipt(t *testing.T) {
 	router := setUpRouter()
-	receipt1 := `{
+	receiptJson := `{
 		"retailer": "Target",
 		"purchaseDate": "2022-01-01",
 		"purchaseTime": "13:01",
@@ -34,7 +34,7 @@ func TestValidReceipt(t *testing.T) {
 		],
 		"total": "35.35"
 		}`
-	req, _ := http.NewRequest("POST", "/receipts/process", bytes.NewBuffer([]byte(receipt1)))
+	req, _ := http.NewRequest("POST", "/receipts/process", bytes.NewBuffer([]byte(receiptJson)))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -253,7 +253,7 @@ func TestInvalidID(t *testing.T) {
 
 func TestCalculatePoints(t *testing.T) {
 	router := setUpRouter()
-	receipt1 := `{
+	receiptJson := `{
 	"retailer": "Target",
 	"purchaseDate": "2022-01-01",
 	"purchaseTime": "13:01",
@@ -277,7 +277,7 @@ func TestCalculatePoints(t *testing.T) {
 	],
 	"total": "35.35"
 	}`
-	req, _ := http.NewRequest("POST", "/receipts/process", bytes.NewBuffer([]byte(receipt1)))
+	req, _ := http.NewRequest("POST", "/receipts/process", bytes.NewBuffer([]byte(receiptJson)))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()

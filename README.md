@@ -143,4 +143,4 @@ My name is Shreyas Shridhar. I graduated with a Master's in Computer Science fro
 * Email: ss9531@rit.edu
 * Linkedin: https://linkedin.com/in/shreyasshridhar0511
 
-This project was completed as a part of Fetch Backend Engineer Apprenticeship position.
+This project was completed as a part of Fetch Backend Engineer position.
