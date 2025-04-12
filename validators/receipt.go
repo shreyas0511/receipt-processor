@@ -63,8 +63,5 @@ func ValidateTime(purchaseTime string) (time.Time, error) {
 }
 
 func ValidatePrice(amount string) bool {
-	// Valid prices 0.99, 1.05, 10.50, 0.00
-	// Amount should not start with 0, unless immediately followed by a decimal point
-	// Amount should have exactly 2 digits after the decimal point, from 00 to 99, as 100 cents is 1 dollar
 	return PriceRegEx.MatchString(amount)
 }

@@ -1,4 +1,4 @@
-# ---- Build Stage ----
+    # ---- Build Stage ----
     FROM golang:1.24-alpine AS builder
 
     # Install git (needed for go get if you're using external packages)
